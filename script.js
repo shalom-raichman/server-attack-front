@@ -2,7 +2,7 @@
 //alert("welcom")
 
 
-const missiles = ["missile 1", "missile 2", "missile 3", "missile 4"]
+const missiles = []
 
 const addMIssile = () => {
     const missilesDiv = document.getElementById("missiles-div")
@@ -10,12 +10,25 @@ const addMIssile = () => {
     p.innerText = missiles.shift();
     missilesDiv.appendChild(p)
 }
-
-
+let result;
+ 
 const loadMissilesjson = async() => {
-    
+
     const response = await fetch("/missiles.json");
-    const result = await response.json();
-    console.log(`result is: ${JSON.stringify(result)}`);
+    result = await response.json();
+
+    console.log(missiles);
     
+    
+}
+
+const socket = new WebSocket('ws://localhost:3108/MissileHandler');
+
+let i = 0;
+
+const publishMessage = () => {
+    if(i < result.length){
+        socket.send(JSON.stringify(result[i]));
+    }
+  i++;
 }
