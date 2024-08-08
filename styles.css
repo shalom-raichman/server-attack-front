@@ -1,0 +1,18 @@
+.main-headline {
+    color: green;
+}
+
+body {
+    background-color: rgb(0, 15, 10);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    align-items: center;
+    flex-direction: column;
+}
+
+.missiles{
+    color: rgb(243, 243, 243);
+}
